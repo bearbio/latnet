@@ -1,0 +1,73 @@
+<template>
+  <div>
+    <h2>TODO</h2>
+    <el-input
+      type="textarea"
+      v-model="mRNAinputValue"
+      :rows="7"
+      placeholder="请输入内容"
+    ></el-input>
+    <div style="text-align: left; margin-top: 2%">
+      <el-button @click="predict" class="custom-button">Predict</el-button>
+      <el-button @click="clear" class="custom-button">Clear</el-button>
+      <el-button @click="example" class="custom-button">Example</el-button>
+    </div>
+    <div style="margin-top: 3%">
+      <div v-if="isPredicting">正在预测...</div>
+      <el-table v-if="predictionResult" :data="predictionResult" border stripe>
+        <el-table-column prop="name" label="name"></el-table-column>
+        <el-table-column prop="nucleus" label="nucleus"></el-table-column>
+        <el-table-column prop="cytoplasm" label="cytoplasm"></el-table-column>
+        <el-table-column prop="location" label="location"></el-table-column>
+      </el-table>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "mRNAComponent",
+  data() {
+    return {
+      defaultInput: `>seq1
+  AAAAAAAAAAAAAAAAAAAAAAAA`,
+      mRNAinputValue: "",
+      isPredicting: false,
+      predictionResult: null,
+    };
+  },
+  created() {
+    this.mRNAinputValue = this.defaultInput;
+  },
+  methods: {
+    async predict() {
+      // 拆分输入
+      const sequences = this.mRNAinputValue.split('>').filter(Boolean).map(seq => {
+        const [name, ...lines] = seq.split('\n');
+        return { name: name.trim(), sequence: lines.join('').trim() };
+      });
+
+     // 发送请求
+     const response = await fetch('https://latnet.wsleepybear.cn/mrna-predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sequences),
+      });      // 处理响应
+      this.isPredicting = true;
+      const result = await response.json();
+      // console.log(result.result);
+      this.predictionResult = result.result;
+      this.isPredicting = false;
+    },
+    clear() {
+      this.mRNAinputValue = "";
+      this.predictionResult = null;
+    },
+    example() {
+      this.mRNAinputValue = this.defaultInput;
+    },
+  },
+};
+</script>
