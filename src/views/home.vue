@@ -58,7 +58,7 @@
           margin-left: 2%;
         "
       >
-      <li v-for="(item, index) in list2" :key="index" v-html="item"></li>
+      <li v-for="(item, index) in list2" :key="index" v-html="item" style="margin-bottom: 10px"></li>
       </ul>
     </div>  
   </el-card>
@@ -99,8 +99,8 @@ export default {
         "In-depth analysis using the Occlusion algorithm to identify key nucleotide combinations .",
       ],
       list2: [
-      "The INTRODUCTION page displays images of the experimental results of the paper.",
-      "PREDICT provides online subcellular localization prediction for lncRNA and mRNA.",
+      "The <strong>INTRODUCTION</strong> page displays images of the experimental results of the paper.",
+      "The <strong>PREDICT</strong> provides online subcellular localization prediction for lncRNA and mRNA.",
       "Code repository: <a href='https://github.com/wsleepybear/LATnet'>https://github.com/wsleepybear/LATnet</a>"
       ],
       buttons: [
