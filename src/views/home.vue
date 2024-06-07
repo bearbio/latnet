@@ -51,6 +51,16 @@
       <icon-menu class="icon" />
       <p class="text">Guide</p>
     </div>
+    <div :style="{ fontSize: '18px', textAlign: 'left' }">
+      <ul
+        style="
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          margin-left: 2%;
+        "
+      >
+      <li v-for="(item, index) in list2" :key="index" v-html="item"></li>
+      </ul>
+    </div>  
   </el-card>
 
   <el-card class="card-style" shadow="hover">
@@ -58,7 +68,12 @@
       <icon-bar-chart class="icon" />
       <p class="text">Architecture</p>
     </div>
-    <el-image style="width: 100%" :src="require('@/assets/images/大论文框架图.png' )" :fit="fit" :preview-src-list="[require('@/assets/images/大论文框架图.png' )]" />
+    <el-image
+      style="width: 100%"
+      :src="require('@/assets/images/大论文框架图.png')"
+      :fit="fit"
+      :preview-src-list="[require('@/assets/images/大论文框架图.png')]"
+    />
   </el-card>
 </template>
 
@@ -82,6 +97,11 @@ export default {
         "Enhanced feature extraction through five encoding strategies and a dual-path parallel structur.",
         "Significant outperformance of existing methods in predicting RNA localization.",
         "In-depth analysis using the Occlusion algorithm to identify key nucleotide combinations .",
+      ],
+      list2: [
+      "The INTRODUCTION page displays images of the experimental results of the paper.",
+      "PREDICT provides online subcellular localization prediction for lncRNA and mRNA.",
+      "Code repository: <a href='https://github.com/wsleepybear/LATnet'>https://github.com/wsleepybear/LATnet</a>"
       ],
       buttons: [
         { label: "Deep Learning", color: "#51cbce" },

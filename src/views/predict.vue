@@ -8,7 +8,7 @@
       background-color: #333333;
     "
   >
-    <h1 style="color: white; ">PREDICT</h1>
+    <h1 style="color: white">PREDICT</h1>
   </el-card>
 
   <el-tabs type="border-card" class="custom-tabs">
