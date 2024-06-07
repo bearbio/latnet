@@ -21,7 +21,7 @@
           <el-menu-item index="/predict" @click="$router.push('/predict')"
             >PREDICT</el-menu-item
           >
-          <el-menu-item index="/contact">CONTACT US</el-menu-item>
+          <el-menu-item index="/contact" @click="$router.push('/contact')">CONTACT US</el-menu-item>
         </el-menu>
       </el-aside>
       <el-main ref="main">

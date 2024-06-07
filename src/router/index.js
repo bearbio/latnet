@@ -2,6 +2,7 @@ import { createRouter,createWebHashHistory } from "vue-router";
 import HomeComponent from "../views/home.vue";
 import IntroductionComponent from "../views/introduction.vue";
 import PredictComponent from "../views/predict.vue";
+import ContactComponent from "../views/contact.vue";
 const routes = [
   {
     path: "/home",
@@ -18,7 +19,7 @@ const routes = [
     component: IntroductionComponent,
   },
   { path: "/predict", name: "predict", component: PredictComponent },
-  //   { path: '/contact', component: Position4 },
+  { path: "/contact", name:"contact",component: ContactComponent },
 ];
 
 const router = createRouter({
