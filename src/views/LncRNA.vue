@@ -20,7 +20,7 @@
       type="textarea"
       v-model="lncRNAinputValue"
       :rows="7"
-      placeholder="请输入内容"
+      placeholder="Please enter content"
     ></el-input>
     <div style="text-align: left; margin-top: 2%">
       <el-button @click="predict" class="custom-button">Predict</el-button>
@@ -28,7 +28,7 @@
       <el-button @click="example" class="custom-button">Example</el-button>
     </div>
     <div style="margin-top: 3%">
-      <div v-if="isPredicting">正在预测...</div>
+      <div v-if="isPredicting">PREDICTING...</div>
       <el-table v-if="predictionResult" :data="predictionResult" border stripe>
         <el-table-column prop="name" label="name"></el-table-column>
         <el-table-column prop="nucleus" label="nucleus"></el-table-column>
